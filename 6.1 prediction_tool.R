@@ -7,6 +7,7 @@ library(rpart.plot)
 # Read in the RF model
 model <- readRDS("model.rds")
 
+TrainSet <- fread("input.csv", header = TRUE, stringsAsFactors = T)
 ####################################
 # User interface                   #
 ####################################
@@ -57,7 +58,7 @@ server<- function(input, output, session) {
   
   # Input Data
   datasetInput <- reactive({  
-    test <- TrainSet[2]
+    test <- TrainSet[1]
     test[, ":="("avg_fico_range_high" = input$avg_fico_range_high,
                 "avg_num_rev_accts" = input$avg_num_rev_accts,
                 "bc_open_to_buy" = input$bc_open_to_buy,
