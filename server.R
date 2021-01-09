@@ -51,4 +51,10 @@ server<- function(input, output, session) {
     req(input$count)
     paste("keep alive ", input$count)
   })
+  
+  autoInvalidate <- reactiveTimer(10000)
+  observe({
+    autoInvalidate()
+    cat(".")
+  })
 }
