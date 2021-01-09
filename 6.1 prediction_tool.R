@@ -5,7 +5,6 @@ library(rpart)
 library(rpart.plot)
 
 # Read in the RF model
-setwd("C:/Users/yangc/OneDrive - Nanyang Technological University/Uni/Y2Sem1/BC2406/Project/Prediction Tool")
 model <- readRDS("model.rds")
 
 ####################################
