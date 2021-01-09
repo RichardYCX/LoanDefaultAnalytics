@@ -6,30 +6,29 @@ library(shiny)
 ####################################
 ui <- pageWithSidebar(
   tags$head(
-        HTML(
-          "
-          <script>
-          var socket_timeout_interval
-          var n = 0
-          $(document).on('shiny:connected', function(event) {
-          socket_timeout_interval = setInterval(function(){
-          Shiny.onInputChange('count', n++)
-          }, 15000)
-          });
-          $(document).on('shiny:disconnected', function(event) {
-          clearInterval(socket_timeout_interval)
-          });
-          </script>
-          "
-        )
-      ),
+          HTML(
+            "
+            <script>
+            var socket_timeout_interval
+            var n = 0
+            $(document).on('shiny:connected', function(event) {
+            socket_timeout_interval = setInterval(function(){
+            Shiny.onInputChange('count', n++)
+            }, 15000)
+            });
+            $(document).on('shiny:disconnected', function(event) {
+            clearInterval(socket_timeout_interval)
+            });
+            </script>
+            "
+          )
+          ),  
   # Page header
   headerPanel('Loan Default Predictor'),
   
   # Input values
   sidebarPanel(
-    textOutput("keepAlive")
-    HTML("<h3>Input parameters</h4>"),
+    HTML("<h3>Input parameters</h3>"),
     sliderInput("avg_fico_range_high", label = "avg fico score", value = 700,
                 min = 0,
                 max = 850),
@@ -54,6 +53,7 @@ ui <- pageWithSidebar(
   ),
   
   mainPanel(
+    textOutput("keepAlive"),
     tags$label(h3('Status/Output')), # Status/Output Text Box
     verbatimTextOutput('contents'),
     tableOutput('tabledata') # Prediction results table
