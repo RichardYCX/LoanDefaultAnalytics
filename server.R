@@ -24,9 +24,6 @@ server<- function(input, output, session) {
                 "term" = input$term,
                 "total_acc" = total_acc)]
     
-    input <- test
-    write.table(input,"input.csv", sep=",", quote = FALSE, row.names = FALSE, col.names = TRUE)
-    test <- read.csv(paste("input", ".csv", sep=""), header = TRUE)
     Output <- data.table(round(rpart.predict(model,test,type="prob")*100, 3))
     names(Output)[1] <- "Perentage chance of loan defaulting"
     names(Output)[2] <- "Perentage chance of loan fully paid back"
