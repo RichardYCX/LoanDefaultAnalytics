@@ -4,7 +4,7 @@ library(rpart)
 library(rpart.plot)
 
 # Read in the RF model
-model <- readRDS("model.rds")
+model <- readRDS("model.RDS")
 
 ####################################
 # Server                           #
